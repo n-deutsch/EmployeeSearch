@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from '../app-service.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Employee} from '../employee';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 
 @Component({
   selector: 'app-search',
@@ -9,8 +10,9 @@ import {Employee} from '../employee';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  public employees: any = [];
-  public searchResults: any = [];
+  public employees: Employee[] = [];
+  public allEmployees: Employee[] = [];
+
   public employee: Employee = null;
   public selectedId = -1;
 
@@ -23,45 +25,62 @@ export class SearchComponent implements OnInit {
 
   constructor(private appSvc: AppServiceService, private activeRoute: ActivatedRoute) { }
 
+  /*init contacts my web API and fills employees and allEmployees
+  with the contents from my person_nathan database table*/
   ngOnInit() {
     this.appSvc.getPeople().then((data =>{
+      this.allEmployees = data;
       this.employees = data;
     }));
   }
 
+  /*showAll() removes search constraints and makes the 
+  html table show every entry in the database */
+  public showAll(){
+    this.employees = this.allEmployees;
+  }
+
+  /*searchClick() constrains the list of displayed employees by 
+  name, email, phone, country, state, and city*/ 
   public searchClick(){
-    //create a copy of employeees
-    var tempEmployees = this.employees;
     this.employees = [];
     
-    //for each entry in 'employees'...
-    for(var e in tempEmployees){
+    alert("searchClick()");
+
+    //for each entry in 'allemployees'...
+    for(let i=0; i<this.allEmployees.length; i++){
       //check name
-      if(this.searchName != ""){
-        //if(!e.Name.includes(this.searchName))
-          //continue;
+      if(this.searchName.length > 0){
+        if(!this.allEmployees[i].Name.includes(this.searchName))
+          continue;
       }
       //check email
-      if(this.searchEmail!= ""){
-
+      if(this.searchEmail.length > 0){
+        if(!this.allEmployees[i].Email.includes(this.searchEmail))
+        continue;
       }
       //check phone
-      if(this.searchPhone!=""){
-
+      if(this.searchPhone.length > 0){
+        if(!this.allEmployees[i].Phone.includes(this.searchPhone))
+        continue;
       }
       //check country
-      if(this.searchCountry!=""){
-
+      if(this.searchCountry.length > 0){
+        if(!this.allEmployees[i].Country.includes(this.searchCountry))
+        continue;
       }
       //check state
-      if(this.searchState!=""){
-
+      if(this.searchState.length > 0){
+        if(!this.allEmployees[i].State.includes(this.searchState))
+        continue;
       }
       //check city
-      if(this.searchCity!=""){
-        
+      if(this.searchCity.length > 0){
+        if(!this.allEmployees[i].City.includes(this.searchCity))
+        continue;
       }
-      this.employees.add(e);
-    }
+
+      this.employees.push(this.allEmployees[i]);
+    }//end of for loop
   }
 }
