@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <button class="search" (click)="searchClick()">Search</button>
-      <button class="add">Add New</button>
+      <button class="add" routerLink="/add-edit">Add New</button>
     </div>
   </div>
 
@@ -59,7 +59,7 @@
           <td>{{employee.City}}</td>
           <td>
             <button class="edit">Edit</button>
-            <button class="delete">Delete</button>
+            <button class="delete" (click)="deleteEmployee(employee.ID)">Delete</button>
           </td>
         </tr>
       </tbody>

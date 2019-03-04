@@ -23,8 +23,6 @@ const httpOptions = {
 export class AppServiceService {
   private url: string = "https://employeemanagerbackend.azurewebsites.net/api";
 
-  
-
   constructor(private http: HttpClient) { }
 
   public getPeople():Promise<any>{

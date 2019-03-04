@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from '../app-service.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Employee} from '../employee';
-import { toBase64String } from '@angular/compiler/src/output/source_map';
+import { EmployeesComponent } from '../employees/employees.component';
 
 @Component({
   selector: 'app-search',
@@ -32,6 +32,9 @@ export class SearchComponent implements OnInit {
       this.allEmployees = data;
       this.employees = data;
     }));
+
+    //no selected employee by default
+    this.selectedId = -1;
   }
 
   /*showAll() removes search constraints and makes the 
@@ -82,5 +85,25 @@ export class SearchComponent implements OnInit {
 
       this.employees.push(this.allEmployees[i]);
     }//end of for loop
+  }
+
+  public deleteEmployee(id: number){
+    //alert("deleting employee #" + id);
+
+    //remove from employees
+    for(let i=0; i<this.employees.length; i++){
+      if(this.employees[i].ID == id){
+        this.employees.splice(i,1);
+      }
+    }
+
+    //remove from allEmployees
+    for(let i=0; i<this.allEmployees.length; i++){
+      if(this.allEmployees[i].ID == id){
+        this.allEmployees.splice(i,1);
+      }
+    }
+
+    this.appSvc.delete(id.toString());
   }
 }

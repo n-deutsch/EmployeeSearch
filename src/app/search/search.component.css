@@ -13,6 +13,8 @@
 }
 
 .search{
+    margin-top:10px;
+    margin-bottom:10px;
     background-color:white;
     color:black;
     min-width:90px;
@@ -20,6 +22,8 @@
 }
 
 .add{
+    margin-top:10px;
+    margin-bottom:10px;
     background-color:green;
     color:white;
     min-width:90px;
