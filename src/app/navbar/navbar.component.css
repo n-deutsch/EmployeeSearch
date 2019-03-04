@@ -1,0 +1,23 @@
+.topnav{
+    background-color: white;
+}
+
+.nav_entry{
+    display:inline-block;
+    min-width:150px;
+    color:black;
+    font-size:26px;
+    text-align:center;
+}
+
+.nav_entry:hover{
+    background-color:black;
+    color:white;
+    transition:.25s;
+}
+
+.nav_link{
+    text-decoration: none;
+    color: inherit;
+    margin-top:50px;
+}

@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <input [(ngModel)]="searchName" placeholder="Name">
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <input [(ngModel)]="searchEmail" placeholder="Email">
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <input [(ngModel)]="searchPhone" placeholder="Phone">
+  </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <input [(ngModel)]="searchCountry" placeholder="Country">
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <input [(ngModel)]="searchState" placeholder="State">
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <input [(ngModel)]="searchCity" placeholder="City">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <button class="search">Search</button>
+      <button class="add">Add New</button>
+    </div>
+  </div>
+
+
+
+
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td><b>ID</b></td>
+          <td><b>Photo</b></td>
+          <td><b>Name</b></td>
+          <td><b>Email</b></td>
+          <td><b>Phone</b></td>
+          <td><b>Country</b></td>
+          <td><b>State</b></td>
+          <td><b>City</b></td>
+          <td><b>Actions</b></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{employee.ID}}</td>
+          <td>{{employee.Photo}}</td>
+          <td>{{employee.Name}}</td>
+          <td>{{employee.Email}}</td>
+          <td>{{employee.Phone}}</td>
+          <td>{{employee.Country}}</td>
+          <td>{{employee.State}}</td>
+          <td>{{employee.City}}</td>
+          <td>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

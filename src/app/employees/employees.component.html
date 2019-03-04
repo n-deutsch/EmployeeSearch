@@ -1,0 +1,41 @@
+<h2>my employees</h2>
+<div class="row-fluid">
+<ul class="employees">
+  <li *ngFor="let employee of employees" 
+  [class.selected]="employee === selectedEmployee" 
+  (click)="onSelect(employee)">
+    <span class="badge">{{employee.ID}}</span> {{employee.Name}}
+  </li>
+</ul>
+</div>
+
+<app-employee-detail [employee]="selectedEmployee"></app-employee-detail>
+
+<div class="row-fluid">
+  <div class="col-12">
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <td>Photo</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>Country</td>
+        <td>State</td>
+        <td>City</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.Photo}}</td>
+        <td>{{employee.Name}}</td>
+        <td>{{employee.Email}}</td>
+        <td>{{employee.Phone}}</td>
+        <td>{{employee.Country}}</td>
+        <td>{{employee.State}}</td>
+        <td>{{employee.City}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

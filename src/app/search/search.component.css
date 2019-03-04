@@ -1,0 +1,27 @@
+.edit{
+    background-color:blue;
+    color:white;
+    min-width:90px;
+    min-height:10px;
+}
+
+.delete{
+    background-color:red;
+    color:white;
+    min-width:90px;
+    min-height:10px;
+}
+
+.search{
+    background-color:white;
+    color:black;
+    min-width:90px;
+    min-height:10px;
+}
+
+.add{
+    background-color:green;
+    color:white;
+    min-width:90px;
+    min-height:10px;
+}
