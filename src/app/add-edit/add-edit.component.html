@@ -1,3 +1,7 @@
-<p>
-  add-edit works!
-</p>
+<div ngIf="relevantEmployee;else other_content">
+  <p>Add new boy</p>
+</div>
+
+<ng-template #other_content>
+  <p>edit boy # {{relevantEmployee.ID}}</p>
+</ng-template>

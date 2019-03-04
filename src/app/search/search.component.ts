@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from '../app-service.service';
-import {Router, ActivatedRoute} from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import {Employee} from '../employee';
-import { EmployeesComponent } from '../employees/employees.component';
+import { RelevantEmployeeService } from '../relevant-employee.service';
 
 @Component({
   selector: 'app-search',
@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   public allEmployees: Employee[] = [];
 
   public employee: Employee = null;
-  public selectedId = -1;
+  public relevantEmployee: Employee = null;
 
   public searchName = "";
   public searchEmail = "";
@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
   public searchState = "";
   public searchCity = "";
 
-  constructor(private appSvc: AppServiceService, private activeRoute: ActivatedRoute) { }
+  constructor(private appSvc: AppServiceService, private relEmpSvc: RelevantEmployeeService, private activeRoute: ActivatedRoute) { }
 
   /*init contacts my web API and fills employees and allEmployees
   with the contents from my person_nathan database table*/
@@ -34,7 +34,8 @@ export class SearchComponent implements OnInit {
     }));
 
     //no selected employee by default
-    this.selectedId = -1;
+    this.relevantEmployee = null;
+    this.relEmpSvc.setRelevantEmployee(this.relevantEmployee);
   }
 
   /*showAll() removes search constraints and makes the 
@@ -48,7 +49,7 @@ export class SearchComponent implements OnInit {
   public searchClick(){
     this.employees = [];
     
-    alert("searchClick()");
+    //alert("searchClick()");
 
     //for each entry in 'allemployees'...
     for(let i=0; i<this.allEmployees.length; i++){
@@ -105,5 +106,24 @@ export class SearchComponent implements OnInit {
     }
 
     this.appSvc.delete(id.toString());
+  }
+
+  public setRelevantEmployee(id: number){
+    this.relevantEmployee = null;
+    
+    if(id<0){
+      alert("no employee selected");
+      this.relEmpSvc.setRelevantEmployee(null);
+    }
+    else{
+      alert("relevant employee #: " + id);
+    }
+
+    for(let i=0; i<this.allEmployees.length; i++){
+      if(this.allEmployees[i].ID == id){
+        this.relevantEmployee = this.allEmployees[i];
+      }
+    }
+    this.relEmpSvc.setRelevantEmployee(this.relevantEmployee);
   }
 }

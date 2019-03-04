@@ -18,8 +18,6 @@ const httpOptions = {
   //providedIn: 'root'
 )
 
-
-
 export class AppServiceService {
   private url: string = "https://employeemanagerbackend.azurewebsites.net/api";
 

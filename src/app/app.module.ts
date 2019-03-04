@@ -13,6 +13,7 @@ import { SearchComponent } from './search/search.component';
 import { AddEditComponent } from './add-edit/add-edit.component';
 import { AppServiceService } from './app-service.service';
 import { HttpClientModule } from '@angular/common/http'; 
+import { RelevantEmployeeService } from './relevant-employee.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AppServiceService],
+  providers: [AppServiceService, RelevantEmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
