@@ -3,6 +3,7 @@ import { AppServiceService } from '../app-service.service';
 import { ActivatedRoute} from '@angular/router';
 import {Employee} from '../employee';
 import { RelevantEmployeeService } from '../relevant-employee.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-search',
@@ -23,7 +24,9 @@ export class SearchComponent implements OnInit {
   public searchState = "";
   public searchCity = "";
 
-  constructor(private appSvc: AppServiceService, private relEmpSvc: RelevantEmployeeService, private activeRoute: ActivatedRoute) { }
+  constructor(private appSvc: AppServiceService, 
+    private relEmpSvc: RelevantEmployeeService, 
+    private activeRoute: ActivatedRoute) { }
 
   /*init contacts my web API and fills employees and allEmployees
   with the contents from my person_nathan database table*/
@@ -35,7 +38,7 @@ export class SearchComponent implements OnInit {
 
     //no selected employee by default
     this.relevantEmployee = null;
-    this.relEmpSvc.setRelevantEmployee(this.relevantEmployee);
+    this.relEmpSvc.setRelevantEmployee(-1);
   }
 
   /*showAll() removes search constraints and makes the 
@@ -109,21 +112,6 @@ export class SearchComponent implements OnInit {
   }
 
   public setRelevantEmployee(id: number){
-    this.relevantEmployee = null;
-    
-    if(id<0){
-      alert("no employee selected");
-      this.relEmpSvc.setRelevantEmployee(null);
-    }
-    else{
-      alert("relevant employee #: " + id);
-    }
-
-    for(let i=0; i<this.allEmployees.length; i++){
-      if(this.allEmployees[i].ID == id){
-        this.relevantEmployee = this.allEmployees[i];
-      }
-    }
-    this.relEmpSvc.setRelevantEmployee(this.relevantEmployee);
+    this.relEmpSvc.setRelevantEmployee(id);
   }
 }

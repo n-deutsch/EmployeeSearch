@@ -8,14 +8,14 @@ import { Employee } from './employee';
 
 export class RelevantEmployeeService {
 
-  relevantEmployee: Employee = null;
+  relevantId: number = -1;
   constructor() { }
 
   public getRelevantEmployee(){
-    return this.relevantEmployee;
+    return this.relevantId;
   }
 
-  public setRelevantEmployee(e: Employee){
-    this.relevantEmployee = e;
+  public setRelevantEmployee(id: number){
+    this.relevantId = id;
   }
 }

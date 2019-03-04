@@ -1,7 +1,79 @@
-<div ngIf="relevantEmployee;else other_content">
-  <p>Add new boy</p>
+<div *ngIf="adding;else other_content">
+  <h5>Add new employee</h5>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+      Photo:
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <input [(ngModel)]="inputPhoto" placeholder="Photo">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        Name:
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <input [(ngModel)]="inputName" placeholder="Name">
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        Email:
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <input [(ngModel)]="inputEmail" placeholder="Email">
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        Phone:
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <input [(ngModel)]="inputPhone" placeholder="Phone">
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        Country:
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <input [(ngModel)]="inputCountry" placeholder="Country">
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        State:
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <input [(ngModel)]="inputState" placeholder="State">
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        City:
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <input [(ngModel)]="inputCity" placeholder="City">
+      </div>
+  </div>
+
+  <button class="add" (click)="addNew()" routerLink="/search">Add</button>
+
 </div>
 
+
+
 <ng-template #other_content>
-  <p>edit boy # {{relevantEmployee.ID}}</p>
+  <h5>Edit employee #{{relevantID}}</h5>
+  
+
+
+
 </ng-template>
